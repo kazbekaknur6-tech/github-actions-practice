@@ -1,0 +1,27 @@
+name: GitHub Actions Practice
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check index.html
+        run: |
+          if [ -f index.html ]; then
+            echo "index.html файлы табылды!"
+          else
+            echo "index.html файлы табылмады!"
+            exit 1
+          fi
+
+      - name: Success message
+        run: echo "GitHub Actions сәтті орындалды!"
